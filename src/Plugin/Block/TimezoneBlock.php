@@ -20,17 +20,32 @@ use Drupal\adminconfigform\TimeZoneServices;
 class TimezoneBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
-   * @var timezonesetting
+   * Variable will save the timezone setting object value.
    *
-   * Variable will save the service object value
+   * @var timezonesetting
    */
   protected $timezonesetting;
-  protected $config;
+
   /**
+   * Variable will save the config object value.
+   *
+   * @var config
+   */
+  protected $config;
+
+  /**
+   * Main construtor class.
+   *
    * @param array $configuration
+   *   Configuration object.
    * @param string $plugin_id
+   *   Plugin id object.
    * @param mixed $plugin_definition
+   *   Plugin definition object.
    * @param \Drupal\adminconfigform\TimeZoneServices $timezone
+   *   Timezone setting object.
+   * @param Drupal\Core\Config\ConfigFactoryInterface $config
+   *   Config factory object.
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, TimeZoneServices $timezone, ConfigFactoryInterface $config) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
@@ -39,10 +54,16 @@ class TimezoneBlock extends BlockBase implements ContainerFactoryPluginInterface
   }
 
   /**
+   * Create function to pass object as an arguments.
+   *
    * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+   *   Main container object.
    * @param array $configuration
+   *   Configuration object.
    * @param string $plugin_id
+   *   Plugin id object.
    * @param mixed $plugin_definition
+   *   Plugin definition factory object.
    *
    * @return static
    */
@@ -63,14 +84,15 @@ class TimezoneBlock extends BlockBase implements ContainerFactoryPluginInterface
     $configsetting = $this->config->get('adminconfigform.settings');
     $datetime = $this->timezonesetting->getTime();
     $country = $configsetting->get('country');
-    $city = $configsetting->get('city');;
+    $city = $configsetting->get('city');
+    ;
     return [
       '#theme' => 'adminconfigform',
       '#country' => $country,
       '#city' => $city,
       '#datetime' => $datetime,
       '#cache' => [
-        'tags' =>  ['block:timezoneblock'],
+        'tags' => ['block:timezoneblock'],
       ],
     ];
   }

@@ -5,6 +5,7 @@ namespace Drupal\adminconfigform\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Cache\Cache;
+
 /**
  * Class TimezoneForm: Save the country, City and timezone value in configform.
  *
@@ -48,12 +49,10 @@ class TimezoneForm extends ConfigFormBase {
       '#default_value' => $config->get('city'),
     ];
 
-    //dump($config->get('city'));
-
     $form['timezone'] = [
       '#title' => $this->t('Timezone'),
       '#type' => 'select',
-      '#description' => 'Select timezone.',
+      '#description' => $this->t('Select timezone.'),
       '#default_value' => $config->get('timezone'),
       '#options' => $this->getTimeZone(),
 
@@ -75,7 +74,6 @@ class TimezoneForm extends ConfigFormBase {
 
     parent::submitForm($form, $form_state);
   }
-
 
   /**
    * Protected function year dropdown data.

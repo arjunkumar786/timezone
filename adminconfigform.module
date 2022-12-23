@@ -1,13 +1,18 @@
 <?php
 
 /**
+ * @file
+ * Main Module file.
+ */
+
+/**
  * Implements hook_theme().
  */
 function adminconfigform_theme() {
-	return [
-		'adminconfigform' => [
-			'variables' => ['country' => NULL, 'city' => NULL, 'datetime' => NULL],
-			'template' => 'block--timezone',
-		],
-	];
+  return [
+    'adminconfigform' => [
+      'variables' => ['country' => NULL, 'city' => NULL, 'datetime' => NULL],
+      'template' => 'block--timezone',
+    ],
+  ];
 }
