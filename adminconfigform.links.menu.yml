@@ -1,0 +1,5 @@
+adminconfigform.sync:
+  title: 'Time-Zone configuration'
+  description: 'Set timezone configuration setting.'
+  route_name: timezoneform.settings
+  parent: system.admin_config_development

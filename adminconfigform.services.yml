@@ -1,0 +1,4 @@
+services:
+  adminconfigform.timezone_service:
+    class: Drupal\adminconfigform\TimeZoneServices
+    arguments: ['@config.factory']

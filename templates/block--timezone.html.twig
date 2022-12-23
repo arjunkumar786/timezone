@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * Profile ws custom block.
+ */
+#}
+{% set datetime = datetime|split('-') %}
+<div class="col-sm-3 timezone-custom--block">
+	<h1>{{ datetime[1] }}</h1>
+	<p>{{ datetime[0] }}
+		<br>Time in {{ city }}, {{ country }}
+  </p>
+</div>
